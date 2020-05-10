@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: orange;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>111</div>
+
+    <script>
+        var div = document.querySelector('div');
+        div.addEventListener('click',function(e){
+            console.log(e.target);
+        })
+    </script>
+</body>
+</html>

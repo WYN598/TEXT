@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS基础语法3</title>
+</head>
+
+<body>
+    <h1>JS基础语法3</h1>
+    <script>
+
+
+        // function 函数
+        function addNums(num1, num2) {
+            return num1 + num2;
+        }
+        console.log(addNums(4, 5));
+
+        // arguments:函数的内置对象   存储了所有实参   是伪数组(不能使用数组的方法) 
+        function arg() {
+            console.log(arguments);
+        }
+        arg(1,2,3);
+
+
+        //  作用域
+        // 全局作用域：整个js文件
+        // 局部作用域：函数内部
+
+        //  作用域链  就近原则
+            function f1() {
+                var num = 123;
+                function f2() { 
+                    console.log(num);
+                }
+                f2();
+            }
+            var num = 456;
+            f1(); //输出的 num =123 
+
+
+
+
+            
+
+
+        //class
+        class Person {
+            constructor(firstName, lastName, dob) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.dob = new Date(dob);
+            }
+
+            getBirthYear() {
+                return this.dob.getFullYear();
+            }
+
+            getFullName() {
+                return `${this.firstName} ${this.lastName}`;
+            }
+
+        }
+
+        const person1 = new Person('wen', 'yaNing', '10-10-2000');
+        const person2 = new Person('wang', 'xinCan', '6-30-2001');
+
+        console.log(person1);
+        console.log(person2.getFullName());
+    </script>
+</body>
+
+</html>

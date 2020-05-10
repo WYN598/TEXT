@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            padding: 0;
+        }
+        li {
+            background-color: pink;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            border: 2px solid black;
+            margin-top: 5px;
+            list-style-type: none;
+        }
+
+        li a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ul>
+        <li>111</li>
+    </ul>
+
+    <script>
+        var btn = document.querySelector("button");
+        var text = document.querySelector("textarea");
+        var ul = document.querySelector("ul");
+        btn.onclick = function () {
+            if (text.value == "") {
+                alert('Please input something!');
+            } else {
+                var li = document.createElement("li");
+                li.innerHTML = text.value + "<a href = 'javascript:;'>删除</a>";
+                ul.insertBefore(li, ul.children[0]);    //新留言在前面
+                text.value = "";                        //清空textarea
+                var as = document.querySelectorAll("a");
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+                        ul.removeChild(this.parentNode);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

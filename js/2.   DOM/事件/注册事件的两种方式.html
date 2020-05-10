@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>传统方法</button>
+    <button>事件监听方法</button>
+
+    <script>
+        var btns = document.querySelectorAll('button');
+        // 1.传统方法注册事件，只有第二次会起效
+        btns[0].onclick = function(){
+            alert('hi 1');
+        }
+        btns[0].onclick = function(){
+            alert('hi 1 again');
+        }
+
+        // 2.事件监听方法注册事件 addEventListener里面的事件类型是字符串，要带引号，且不带on
+        //                      同一个元素 同一个事件可以添加多个事件侦听器               
+        btns[1].addEventListener('click',function(){
+            alert('hi 2');
+        });
+        btns[1].addEventListener('click',function(){
+            alert('hi 2 again');
+        });
+    </script>
+</body>
+</html>

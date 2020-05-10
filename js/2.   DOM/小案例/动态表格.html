@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+
+
+    <script>
+        var dates = [{
+                name: 'wyn',
+                subject: 'js',
+                score: 100
+            },
+
+            {
+                name: 'wxc',
+                subject: 'jingRong',
+                score: 98
+            },
+
+            {
+                name: 'wxw',
+                subject: 'java',
+                score: 99
+            },
+
+            {
+                name: 'hsx',
+                subject: 'jingCha',
+                score: 88
+            },
+        ];
+
+        // 往tbody里面创建行
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < dates.length; i++) {
+            // 1. 创建行tr
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+
+            // 2. 行里面创建单元格td(跟数据有关的单元格)
+            for (var k in dates[i]) {
+                var td = document.createElement('td');
+                // 把对象里的属性值给td
+                td.innerHTML = dates[i][k];
+                tr.appendChild(td);
+            }
+
+            // 3.创建删除单元格
+            var td = document.createElement('td');
+            td.innerHTML = '<a href = "javascript:;">删除</a>';
+            tr.appendChild(td);
+        }
+
+        // 4.删除操作
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++){
+            as[i].onclick = function() {
+            //点击a 删除当前a所在的行(链接的两级父级)
+            tbody.removeChild(this.parentNode.parentNode);
+        }
+        }
+    </script>
+</body>
+
+</html>
